@@ -6,11 +6,17 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:10:29 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/29 08:58:00 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:37:06 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	put_string_in_win(char *str)
+{
+	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win, g_soul.wall, 64, 0);
+	mlx_string_put(g_soul.mlx, g_soul.mlx_win, 0, 19, 0xFFD700, str);
+}
 
 void	open_door(void)
 {
@@ -40,10 +46,15 @@ void	right(int i, int j)
 		g_soul.cont_coin -= 2;
 	g_soul.map[i][j + 1] = 'P';
 	g_soul.map[i][j] = '0';
-	put_image('r');
+	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
+		g_soul.backround, j * 64, i * 64);
+	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
+		g_soul.backround, (j + 1) * 64, i * 64);
+	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
+		g_soul.p_right, (j + 1) * 64, i * 64);
 	g_soul.steps++;
 	g_soul.conter = ft_itoa(g_soul.steps);
-	mlx_string_put(g_soul.mlx, g_soul.mlx_win, 27, 19, 0xFFD700, g_soul.conter);
+	put_string_in_win(g_soul.conter);
 }
 
 void	ft_move_right(void)
@@ -59,8 +70,9 @@ void	ft_move_right(void)
 		{
 			if (g_soul.map[i][j] == 'P' && g_soul.map[i][j + 1] != '1')
 			{
-				enemie(i, (j + 1));
+				enemie();
 				right(i, j);
+				g_soul.king.j++;
 				open_door();
 				return ;
 			}
@@ -78,10 +90,15 @@ void	left(int i, int j)
 		g_soul.cont_coin -= 2;
 	g_soul.map[i][j - 1] = 'P';
 	g_soul.map[i][j] = '0';
-	put_image('l');
+	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
+		g_soul.backround, j * 64, i * 64);
+	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
+		g_soul.backround, (j - 1) * 64, i * 64);
+	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
+		g_soul.p_left, (j - 1) * 64, i * 64);
 	g_soul.steps++;
 	g_soul.conter = ft_itoa(g_soul.steps);
-	mlx_string_put(g_soul.mlx, g_soul.mlx_win, 27, 19, 0xFFD700, g_soul.conter);
+	put_string_in_win(g_soul.conter);
 }
 
 void	ft_move_left(void)
@@ -97,8 +114,9 @@ void	ft_move_left(void)
 		{
 			if (g_soul.map[i][j] == 'P' && g_soul.map[i][j - 1] != '1')
 			{
-				enemie(i, (j - 1));
+				enemie();
 				left(i, j);
+				g_soul.king.j--;
 				open_door();
 				return ;
 			}

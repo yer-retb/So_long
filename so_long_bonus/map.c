@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:20:02 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/27 11:22:19 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:09:26 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_number_of_char(char str)
 		g_soul.c = 1;
 }
 
-void	valid_map(void)
+void	venemd_map(void)
 {
 	if (g_soul.zero != 1 || g_soul.c != 1 || g_soul.e != 1 || g_soul.p != 2)
 		print_error('M');
@@ -56,7 +56,7 @@ void	check_wall(void)
 		if (g_soul.map[0][j] != '1' || g_soul.map[g_soul.length - 1][j] != '1')
 			print_error('M');
 	}
-	valid_map();
+	venemd_map();
 }
 
 int	size_of_allocation(char **av)

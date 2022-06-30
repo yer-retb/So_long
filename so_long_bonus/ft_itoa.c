@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 07:59:42 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/29 08:36:44 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:38:21 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ char	*ft_itoa(int n)
 	}
 	if (n < 0)
 		rsl[0] = '-';
-	rsl = strjoin("score : ",rsl);
+	rsl = strjoin("MOVE : ",rsl);
 	return (rsl);
 }

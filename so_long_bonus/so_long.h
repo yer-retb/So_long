@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:52:14 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/29 08:00:10 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/06/30 20:47:04 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,41 +20,63 @@
 # include <stdarg.h>
 # include <stdlib.h>
 
+typedef struct n_enemie {
+	int i;
+	int j;
+	int dir;
+} t_enemie;
+
+typedef struct n_player{
+	int i;
+	int j;
+} t_player;
+
 typedef struct n_list {
-	int		size;
-	char	*conter;
-	char	*line_width;
-	char	**map;
-	int		width;
-	int		length;
-	char	*the_n;
-	void	*mlx;
-	void	*mlx_win;
-	void	*backround;
-	void	*open_door;
-	void	*close_door;
-	void	*wall;
-	void	*coin;
-	void	*player;
-	void	*p_left;
-	void	*p_down;
-	void	*p_right;
-	void	*enem_one;
-	void	*enem_tow;
-	void	*enem_thre;
-	void	*enem_four;
-	void	*enem_five;
-	int		cont;
-	int		cont_coin;
-	int		zero;
-	int		c;
-	int		p;
-	int		e;
-	int		steps;
+	int			width;
+	int			length;
+	int			size;
+	int			cont_coin;
+	int			zero;
+	int			c;
+	int			p;
+	int			e;
+	int			steps;
+	int			enemies;
+	int			spid;
+	char		*conter;
+	char		*line_width;
+	char		**map;
+	char		*the_n;
+	void		*mlx;
+	void		*mlx_win;
+	void		*backround;
+	void		*open_door;
+	void		*close_door;
+	void		*wall;
+	void		*player;
+	void		*p_left;
+	void		*p_down;
+	void		*p_right;
+	void		*enem_one;
+	void		*enem_tow;
+	void		*enem_thre;
+	void		*enem_four;
+	void		*enem_five;
+	void		*c1;
+	void		*c2;
+	void		*c3;
+	void		*c4;
+	void		*c5;
+	void		*c6;
+	void		*c7;
+	void		*c8;
+	t_enemie 	*enem;
+	t_player 	king;
 }	t_list;
 
 t_list		g_soul;
 int			g_count;
+int			g_speed;
 
 void	print_error(char c);
 int		size_of_allocation(char **av);
@@ -65,14 +87,18 @@ void	ft_move_up(void);
 void	ft_move_down(void);
 void	ft_move_right(void);
 void	ft_move_left(void);
-void	put_image(char c);
+void	put_image();
 int		move_player(int keyhook);
 int		exit_game(int key);
 int		checker(int i, int j);
 void	check_wall(void);
 void	open_door(void);
-int		enemie(int i, int j);
+void	enemie(void);
 char	*ft_itoa(int n);
+void	put_string_in_win(char *str);
+void	count_enemies(void);
+void	set_enemies(void);
+void	get_direction(void);
 
 /* get next line */
 

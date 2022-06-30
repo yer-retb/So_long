@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 09:20:53 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/27 11:03:31 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:26:30 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,80 @@ int	exit_game(int key)
 	if (key == 0)
 		exit(1);
 	return (0);
+}
+
+
+void	count_enemies()
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (g_soul.map[i])
+	{
+		j = 0;
+		while (g_soul.map[i][j])
+		{
+			if (g_soul.map[i][j] == 'X')
+				g_soul.enemies++;
+			else if (g_soul.map[i][j] == 'P')
+			{
+				g_soul.king.i = i;
+				g_soul.king.j = j;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	set_enemies()
+{
+	int i;
+	int j;
+	int z;
+
+	i = 0;
+	z = 0;
+	g_soul.enem = malloc (sizeof(t_enemie) * g_soul.enemies);
+	while (g_soul.map[i])
+	{
+		j = 0;
+		while (g_soul.map[i][j])
+		{
+			if (g_soul.map[i][j] == 'X')
+			{
+				g_soul.enem[z].i = i;
+				g_soul.enem[z].j = j;
+				g_soul.enem[z++].dir = 1;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	get_direction()
+{
+	int i;
+
+	i = 0;
+	while (i < g_soul.enemies)
+	{
+		if (g_soul.enem[i].dir == 1)
+		{
+			if (g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j + 1] == '1'
+				|| g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j + 1] == 'C'
+					|| g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j + 1] == 'E')
+				g_soul.enem[i].dir = 0;
+		}
+		else
+		{
+			if (g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j - 1] == '1'
+				|| g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j - 1] == 'C'
+					|| g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j - 1] == 'E')
+				g_soul.enem[i].dir = 1;
+		}
+		i++;
+	}
 }
