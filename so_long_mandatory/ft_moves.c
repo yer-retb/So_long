@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 09:03:46 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/27 12:33:32 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 06:49:20 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	checker(int i, int j)
 	{
 		ft_printf("%d\n", g_soul.steps + 1);
 		ft_printf("\033[1;32mYOU WIN\n");
+		ft_free();
 		exit(1);
 	}
 	return (0);

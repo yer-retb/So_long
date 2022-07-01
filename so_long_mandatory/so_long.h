@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 23:52:14 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/27 11:45:20 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 07:45:52 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_list		g_soul;
 int			g_count;
 
 void	print_error(char c);
-int		size_of_allocation(char **av);
+int		size_of_allocation(char *name);
 void	check_ber(char *av);
 void	ft_map(char **av, int size);
 void	check_number_of_char(char str);
@@ -65,6 +65,7 @@ int		exit_game(int key);
 int		checker(int i, int j);
 void	check_wall(void);
 void	open_door(void);
+void	ft_free(void);
 
 /* get next line */
 

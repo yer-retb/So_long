@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 00:05:31 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/30 20:53:12 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 15:31:18 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	image_to_win(int i, int j)
 			(g_soul.mlx, g_soul.mlx_win, g_soul.backround, j * 64, i * 64);
 	if (g_soul.map[i][j] == 'X')
 		mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
-				g_soul.enem_five, j * 64, i * 64);
+			g_soul.enem_five, j * 64, i * 64);
 	if (g_soul.map[i][j] == 'P')
 		mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
 			g_soul.player, j * 64, i * 64);
 }
 
-void	put_image()
+void	put_image(void)
 {
 	int	i;
 	int	j;
@@ -56,21 +56,26 @@ void	put_image()
 void	init_soul(int x, int y)
 {
 	g_soul.backround = mlx_xpm_file_to_image
-		(g_soul.mlx, "backround.xpm", &y, &x);
-	g_soul.player = mlx_xpm_file_to_image(g_soul.mlx, "Player.xpm", &y, &x);
-	g_soul.p_down = mlx_xpm_file_to_image(g_soul.mlx, "P_down.xpm", &y, &x);
-	g_soul.p_left = mlx_xpm_file_to_image(g_soul.mlx, "P_left.xpm", &y, &x);
-	g_soul.p_right = mlx_xpm_file_to_image(g_soul.mlx, "P_right.xpm", &y, &x);
-	g_soul.enem_one = mlx_xpm_file_to_image(g_soul.mlx, "1.xpm", &y, &x);
-	g_soul.enem_tow = mlx_xpm_file_to_image(g_soul.mlx, "2.xpm", &y, &x);
-	g_soul.enem_thre = mlx_xpm_file_to_image(g_soul.mlx, "3.xpm", &y, &x);
-	g_soul.enem_four = mlx_xpm_file_to_image(g_soul.mlx, "4.xpm", &y, &x);
-	g_soul.enem_five = mlx_xpm_file_to_image(g_soul.mlx, "5.xpm", &y, &x);
-	g_soul.c1 = mlx_xpm_file_to_image(g_soul.mlx, "c1.xpm", &y, &x);
-	g_soul.open_door = mlx_xpm_file_to_image(g_soul.mlx, "opendoor.xpm", &y, &x);
-	g_soul.close_door = mlx_xpm_file_to_image(g_soul.mlx, "closdoor.xpm", &y, &x);
-	g_soul.wall = mlx_xpm_file_to_image(g_soul.mlx, "wall.xpm", &y, &x);
-	
+		(g_soul.mlx, "./xpm/backround.xpm", &y, &x);
+	g_soul.player = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/Player.xpm", &y, &x);
+	g_soul.p_down = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_down.xpm", &y, &x);
+	g_soul.p_left = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_left.xpm", &y, &x);
+	g_soul.p_right = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_right.xpm", &y, &x);
+	g_soul.enem_one = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/1.xpm", &y, &x);
+	g_soul.enem_tow = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/2.xpm", &y, &x);
+	g_soul.enem_thre = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/3.xpm", &y, &x);
+	g_soul.enem_four = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/4.xpm", &y, &x);
+	g_soul.enem_five = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/5.xpm", &y, &x);
+	g_soul.c1 = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/c1.xpm", &y, &x);
+	g_soul.open_door = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/opendoor.xpm", &y, &x);
+	g_soul.close_door = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/closdoor.xpm", &y, &x);
+	g_soul.wall = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/wall.xpm", &y, &x);
 }
 
 void	the_image(void)
@@ -97,57 +102,6 @@ void	the_image(void)
 	}
 }
 
-void	move_enemie()
-{
-	int i;
-
-	i = 0;
-
-	while (i < g_soul.enemies)
-	{
-		enemie();
-		if (g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j] == 'X'
-			&& g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j + 1] != '1'
-				&& g_soul.enem[i].dir == 1)
-		{
-				mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
-					g_soul.backround, (g_soul.enem[i].j) * 64, (g_soul.enem[i].i) * 64);
-				mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
-					g_soul.enem_thre, (g_soul.enem[i].j + 1) * 64, (g_soul.enem[i].i) * 64);
-				g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j] = '0';
-				g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j + 1] = 'X';
-				g_soul.enem[i].j++;
-				get_direction();
-		}
-		else if (g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j] == 'X'
-			&& g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j - 1] != '1'
-				&& g_soul.enem[i].dir == 0)
-		{
-			mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
-				g_soul.backround, (g_soul.enem[i].j) * 64, (g_soul.enem[i].i) * 64);
-			mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
-				g_soul.enem_five, (g_soul.enem[i].j - 1) * 64, (g_soul.enem[i].i) * 64);
-			g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j] = '0';
-			g_soul.map[g_soul.enem[i].i][g_soul.enem[i].j - 1] = 'X';
-			g_soul.enem[i].j--;
-			get_direction();
-		}
-		i++;
-	}
-}
-
-int	render_enemie(void)
-{
-	if (g_speed == 1200)
-	{
-		get_direction();
-		move_enemie();
-		g_speed = 0;
-	}
-	g_speed++;
-	return (0);
-}
-
 int	main(int ac, char **av)
 {
 	int	x;
@@ -156,7 +110,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		print_error('a');
 	check_ber(av[1]);
-	g_soul.size = size_of_allocation(av);;
+	g_soul.size = size_of_allocation(av);
 	ft_map(av, g_soul.size);
 	check_wall();
 	the_image();

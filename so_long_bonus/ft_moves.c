@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 09:03:46 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/30 18:09:26 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:40:14 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,10 @@ int	checker(int i, int j)
 	else if (g_soul.map[i][j] == 'E' && g_soul.cont_coin == 0)
 	{
 		ft_printf("\033[1;32mYOU WIN\n");
+		ft_free();
 		exit(1);
 	}
 	return (0);
-}
-
-void	enemie()
-{
-	int i;
-
-	i = 0;
-	while (i < g_soul.enemies)
-	{
-		if (g_soul.enem[i].i == g_soul.king.i && g_soul.enem[i].j == g_soul.king.j)
-		{
-			ft_printf("\033[1;31mYOU LOSE\n");
-			exit(1);
-		}
-		i++;
-	}
 }
 
 void	up(int i, int j)
@@ -55,6 +40,8 @@ void	up(int i, int j)
 	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
 		g_soul.player, j * 64, (i - 1) * 64);
 	g_soul.steps++;
+	if (g_soul.conter != NULL)
+		free(g_soul.conter);
 	g_soul.conter = ft_itoa(g_soul.steps);
 	put_string_in_win(g_soul.conter);
 }
@@ -99,6 +86,8 @@ void	down(int i, int j)
 	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
 		g_soul.p_down, j * 64, (i + 1) * 64);
 	g_soul.steps++;
+	if (g_soul.conter != NULL)
+		free(g_soul.conter);
 	g_soul.conter = ft_itoa(g_soul.steps);
 	put_string_in_win(g_soul.conter);
 }

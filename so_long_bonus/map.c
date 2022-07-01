@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:20:02 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/30 18:09:26 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 11:37:04 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ int	size_of_allocation(char **av)
 	g_soul.width = ft_strlen(g_soul.line_width);
 	while (g_soul.line_width != NULL)
 	{
-		g_soul.line_width = get_next_line(fd);
+		free(g_soul.line_width);
 		g_soul.length++;
+		g_soul.line_width = get_next_line(fd);
 	}
 	return (g_soul.length);
 }

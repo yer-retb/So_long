@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 21:15:13 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/22 22:50:17 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:18:02 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = ft_strdup("");
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	str = malloc (len_s1 + len_s2 + 1);
+	str = malloc(len_s1 + len_s2 + 1);
 	if (!str)
 		return (NULL);
 	i = -1;
@@ -65,7 +65,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[++i] != '\0')
 		str[len_s1 + i] = s2[i];
 	str[len_s1 + i] = '\0';
-	free (s1);
+	free(s1);
 	return (str);
 }
 
@@ -80,7 +80,7 @@ int	ft_strchr(char *ptr)
 	{
 		if (ptr[i] == '\n')
 			return (1);
-	i++;
+		i++;
 	}
 	return (0);
 }
@@ -96,7 +96,7 @@ char	*ft_substr(char *str, int start, int len)
 	i = 0;
 	while (i < len)
 		i++;
-	p = malloc (i + 1);
+	p = malloc(i + 1);
 	j = 0;
 	while (j < i)
 		p[j++] = str[start++];

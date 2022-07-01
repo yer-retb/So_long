@@ -6,17 +6,11 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:10:29 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/30 17:37:06 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:42:14 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	put_string_in_win(char *str)
-{
-	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win, g_soul.wall, 64, 0);
-	mlx_string_put(g_soul.mlx, g_soul.mlx_win, 0, 19, 0xFFD700, str);
-}
 
 void	open_door(void)
 {
@@ -53,6 +47,8 @@ void	right(int i, int j)
 	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
 		g_soul.p_right, (j + 1) * 64, i * 64);
 	g_soul.steps++;
+	if (g_soul.conter != NULL)
+		free(g_soul.conter);
 	g_soul.conter = ft_itoa(g_soul.steps);
 	put_string_in_win(g_soul.conter);
 }
@@ -97,6 +93,8 @@ void	left(int i, int j)
 	mlx_put_image_to_window(g_soul.mlx, g_soul.mlx_win,
 		g_soul.p_left, (j - 1) * 64, i * 64);
 	g_soul.steps++;
+	if (g_soul.conter != NULL)
+		free(g_soul.conter);
 	g_soul.conter = ft_itoa(g_soul.steps);
 	put_string_in_win(g_soul.conter);
 }

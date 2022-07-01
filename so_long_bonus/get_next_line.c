@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 09:09:46 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/28 03:33:42 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:31:33 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*check_the_n(char *saved, char c)
 		i++;
 	if (ft_strlen(saved) == 0)
 		return (0);
+	if (g_soul.the_n != NULL)
+		free(g_soul.the_n);
 	g_soul.the_n = ft_substr(saved, 0, i + 1);
 	return (ft_substr(saved, 0, i));
 }

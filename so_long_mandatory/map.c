@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 11:20:02 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/30 18:09:26 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:16:20 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,33 @@ void	check_wall(void)
 	venemd_map();
 }
 
-int	size_of_allocation(char **av)
+int	size_of_allocation(char *name)
 {
-	int	fd;
+	int		fd;
+	char	*str;
 
-	fd = open(av[1], O_RDWR);
-	g_soul.line_width = get_next_line(fd);
-	g_soul.width = ft_strlen(g_soul.line_width);
-	while (g_soul.line_width != NULL)
+	fd = open(name, O_RDWR);
+	str = get_next_line(fd);
+	g_soul.width = ft_strlen(str);
+	while (str != NULL)
 	{
-		g_soul.line_width = get_next_line(fd);
 		g_soul.length++;
+		free(str);
+		str = get_next_line(fd);
 	}
+	free(str);
 	return (g_soul.length);
+}
+
+void	ft_free(void)
+{
+	int	i;
+
+	i = 0;
+	while (i < g_soul.length)
+	{
+		free(g_soul.map[i]);
+		i++;
+	}
+	free(g_soul.map);
 }

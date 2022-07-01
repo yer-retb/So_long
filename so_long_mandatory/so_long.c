@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 00:05:31 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/27 11:22:14 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:15:49 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,21 @@ void	put_image(void)
 void	init_soul(int x, int y)
 {
 	g_soul.backround = mlx_xpm_file_to_image
-		(g_soul.mlx, "backround.xpm", &y, &x);
-	g_soul.player = mlx_xpm_file_to_image(g_soul.mlx, "Player.xpm", &y, &x);
-	g_soul.p_down = mlx_xpm_file_to_image(g_soul.mlx, "P_down.xpm", &y, &x);
-	g_soul.p_left = mlx_xpm_file_to_image(g_soul.mlx, "P_left.xpm", &y, &x);
-	g_soul.p_right = mlx_xpm_file_to_image(g_soul.mlx, "P_right.xpm", &y, &x);
-	g_soul.coin = mlx_xpm_file_to_image(g_soul.mlx, "coin.xpm", &y, &x);
+		(g_soul.mlx, "./xpm/backround.xpm", &y, &x);
+	g_soul.player = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/Player.xpm", &y, &x);
+	g_soul.p_down = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_down.xpm", &y, &x);
+	g_soul.p_left = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_left.xpm", &y, &x);
+	g_soul.p_right = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_right.xpm", &y, &x);
+	g_soul.coin = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/coin.xpm", &y, &x);
 	g_soul.open_door = mlx_xpm_file_to_image
-		(g_soul.mlx, "opendoor.xpm", &y, &x);
+		(g_soul.mlx, "./xpm/opendoor.xpm", &y, &x);
 	g_soul.close_door = mlx_xpm_file_to_image
-		(g_soul.mlx, "closdoor.xpm", &y, &x);
-	g_soul.wall = mlx_xpm_file_to_image(g_soul.mlx, "wall.xpm", &y, &x);
+		(g_soul.mlx, "./xpm/closdoor.xpm", &y, &x);
+	g_soul.wall = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/wall.xpm", &y, &x);
 }
 
 void	the_image(void)
@@ -94,7 +98,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		print_error('a');
 	check_ber(av[1]);
-	g_soul.size = size_of_allocation(av);
+	g_soul.size = size_of_allocation(av[1]);
 	ft_map(av, g_soul.size);
 	check_wall();
 	the_image();

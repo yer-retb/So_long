@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 07:59:42 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/30 19:38:21 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 15:25:20 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	count_int(long int x)
 }
 
 char	*strjoin(char *s1, char *s2)
-
 {
 	int		i;
 	int		len_1;
@@ -48,7 +47,10 @@ char	*strjoin(char *s1, char *s2)
 		len_2 = ft_strlen(s2);
 		p = (char *)malloc ((len_1 + len_2) * sizeof(char) + 1);
 		if (!p)
+		{
+			free(s2);
 			return (NULL);
+		}
 		while (s1[++i] != '\0')
 			p[i] = s1[i];
 		i = -1;
@@ -86,6 +88,6 @@ char	*ft_itoa(int n)
 	}
 	if (n < 0)
 		rsl[0] = '-';
-	rsl = strjoin("MOVE : ",rsl);
+	rsl = strjoin ("MOVE : ", rsl);
 	return (rsl);
 }

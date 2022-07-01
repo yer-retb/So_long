@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 09:20:53 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/06/27 11:03:31 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/01 10:30:32 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,15 @@
 void	print_error(char c)
 {
 	if (c == 'a')
-	{
 		ft_printf("\033[1;31mCHECK YOUR ARGS \n");
-		exit(1);
-	}
 	if (c == 'M')
-	{
 		ft_printf("\033[1;31mCHECK YOUR MAP \n");
-		exit(1);
-	}
 	if (c == 'm')
-	{
 		ft_printf("\033[1;31mEMPTY MAP \n");
-		exit(1);
-	}
 	if (c == 'b')
-	{
 		ft_printf("\033[1;31mCHECK YOUR .ber \n");
-		exit(1);
-	}
+	ft_free();
+	exit(1);
 }
 
 void	check_ber(char *av)
@@ -88,13 +78,19 @@ int	move_player(int keyhook)
 	if (keyhook == 2 || keyhook == 124)
 		ft_move_right();
 	if (keyhook == 53)
+	{
+		ft_free();
 		exit(1);
+	}
 	return (0);
 }
 
 int	exit_game(int key)
 {
 	if (key == 0)
+	{
+		ft_free();
 		exit(1);
+	}
 	return (0);
 }
