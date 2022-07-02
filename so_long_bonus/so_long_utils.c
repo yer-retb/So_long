@@ -6,7 +6,7 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 09:20:53 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/07/01 13:27:16 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/02 11:39:21 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	print_error(char c)
 		ft_printf("\033[1;31mEMPTY MAP \n");
 	if (c == 'b')
 		ft_printf("\033[1;31mCHECK YOUR .ber \n");
-	ft_free();
 	exit(1);
 }
 

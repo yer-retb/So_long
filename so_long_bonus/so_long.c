@@ -6,11 +6,36 @@
 /*   By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 00:05:31 by yer-retb          #+#    #+#             */
-/*   Updated: 2022/07/01 15:31:18 by yer-retb         ###   ########.fr       */
+/*   Updated: 2022/07/02 12:52:02 by yer-retb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	init_soul(int x, int y)
+{
+	g_soul.backround = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/backround.xpm", &y, &x);
+	g_soul.player = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/Player.xpm", &y, &x);
+	g_soul.p_down = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_down.xpm", &y, &x);
+	g_soul.p_left = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_left.xpm", &y, &x);
+	g_soul.p_right = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/P_right.xpm", &y, &x);
+	g_soul.enem_one = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/1.xpm", &y, &x);
+	g_soul.enem_tow = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/2.xpm", &y, &x);
+	g_soul.enem_thre = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/3.xpm", &y, &x);
+	g_soul.enem_four = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/4.xpm", &y, &x);
+	g_soul.enem_five = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/5.xpm", &y, &x);
+	g_soul.c1 = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/c1.xpm", &y, &x);
+	g_soul.open_door = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/opendoor.xpm", &y, &x);
+	g_soul.close_door = mlx_xpm_file_to_image
+		(g_soul.mlx, "./xpm/closdoor.xpm", &y, &x);
+	g_soul.wall = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/wall.xpm", &y, &x);
+}
 
 void	image_to_win(int i, int j)
 {
@@ -51,31 +76,6 @@ void	put_image(void)
 		}
 		i++;
 	}
-}
-
-void	init_soul(int x, int y)
-{
-	g_soul.backround = mlx_xpm_file_to_image
-		(g_soul.mlx, "./xpm/backround.xpm", &y, &x);
-	g_soul.player = mlx_xpm_file_to_image
-		(g_soul.mlx, "./xpm/Player.xpm", &y, &x);
-	g_soul.p_down = mlx_xpm_file_to_image
-		(g_soul.mlx, "./xpm/P_down.xpm", &y, &x);
-	g_soul.p_left = mlx_xpm_file_to_image
-		(g_soul.mlx, "./xpm/P_left.xpm", &y, &x);
-	g_soul.p_right = mlx_xpm_file_to_image
-		(g_soul.mlx, "./xpm/P_right.xpm", &y, &x);
-	g_soul.enem_one = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/1.xpm", &y, &x);
-	g_soul.enem_tow = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/2.xpm", &y, &x);
-	g_soul.enem_thre = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/3.xpm", &y, &x);
-	g_soul.enem_four = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/4.xpm", &y, &x);
-	g_soul.enem_five = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/5.xpm", &y, &x);
-	g_soul.c1 = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/c1.xpm", &y, &x);
-	g_soul.open_door = mlx_xpm_file_to_image
-		(g_soul.mlx, "./xpm/opendoor.xpm", &y, &x);
-	g_soul.close_door = mlx_xpm_file_to_image
-		(g_soul.mlx, "./xpm/closdoor.xpm", &y, &x);
-	g_soul.wall = mlx_xpm_file_to_image(g_soul.mlx, "./xpm/wall.xpm", &y, &x);
 }
 
 void	the_image(void)

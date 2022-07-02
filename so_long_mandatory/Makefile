@@ -6,7 +6,7 @@
 #    By: yer-retb <yer-retb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 05:55:16 by yer-retb          #+#    #+#              #
-#    Updated: 2022/07/01 11:25:49 by yer-retb         ###   ########.fr        #
+#    Updated: 2022/07/01 15:34:58 by yer-retb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,3 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
-
-push : 
-	rm -rf .DS_Store
-	git add .
-	git status
-	git commit -m "so_long"
-	git push -f github master
